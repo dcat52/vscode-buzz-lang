@@ -1,0 +1,25 @@
+{
+  "name": "buzz-lang-syntax",
+  "displayName": "buzz-lang-syntax",
+  "description": "provide language syntax highlighting for buzz",
+  "version": "0.0.1",
+  "engines": {
+    "vscode": "^1.74.0"
+  },
+  "categories": [
+    "Programming Languages"
+  ],
+  "contributes": {
+    "languages": [{
+      "id": "buzz",
+      "aliases": ["buzz-lang", "Buzz", "bzz"],
+      "extensions": [".bzz"],
+      "configuration": "./syntaxes/buzz.tmLanguage.json"
+    }],
+    "grammars": [{
+      "language": "buzz",
+      "scopeName": "source.buzz",
+      "path": "./syntaxes/buzz.tmLanguage.json"
+    }]
+  }
+}

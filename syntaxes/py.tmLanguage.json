@@ -1,0 +1,59 @@
+{
+    "name": "buzz",
+    "scopeName": "source.buzz",
+    "fileTypes": ["bzz"],
+    "patterns": [
+        {
+            "include": "#string"
+        },
+        {
+            "include": "#comments"
+        },
+        {
+            "include": "#keywords"
+        }
+    ],
+    "repository": {
+        "string": {
+            "patterns": [
+                {
+                    "name": "string.quoted.double.python",
+                    "begin": "\"",
+                    "end": "\"",
+                    "patterns": [
+                        {
+                            "include": "#string_escape"
+                        }
+                    ]
+                },
+                {
+                    "name": "string.quoted.single.python",
+                    "begin": "'",
+                    "end": "'",
+                    "patterns": [
+                        {
+                            "include": "#string_escape"
+                        }
+                    ]
+                }
+            ]
+        },
+        "keywords": {
+            "patterns": [
+                {
+                    "name": "keyword.control.if",
+                    "match": "if"
+                }
+            ]
+        },
+        "comments": {
+            "patterns": [
+                {
+                    "name": "comment.line.number-sign.python",
+                    "begin": "#",
+                    "end": "$\\n?"
+                }
+            ]
+        }
+    }
+}

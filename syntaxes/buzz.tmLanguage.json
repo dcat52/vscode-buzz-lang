@@ -1,0 +1,93 @@
+{
+    "name": "buzz",
+    "scopeName": "source.buzz",
+    "fileTypes": ["bzz"],
+    "patterns": [
+        {
+            "include": "#comments"
+        },
+        {
+            "include": "#operators"
+        },
+        {
+            "include": "#logical"
+        },
+        {
+            "include": "#keywords"
+        },
+        {
+            "include": "#variable"
+        },
+        {
+            "include": "#class"
+        }
+    ],
+    "repository": {
+
+        "comments": {
+            "patterns": [
+                {
+                    "name": "comment",
+                    "begin": "#",
+                    "end": "$\\n?"
+                }
+            ]
+        },
+        "operators": {
+            "patterns": [
+                {
+                    "name": "keyword.operator.arithmetic",
+                    "match": "\\+|\\-|\\*|\\/|\\^|%|>|<|="
+                }
+            ]
+        },
+        "keywords": {
+            "patterns": [
+                {
+                    "name": "keyword.control.if",
+                    "match": "\\b(if|else)\\b"
+                },
+                {
+                    "name": "keyword.control.loops",
+                    "match": "\\b(while|for)\\b"
+                },
+                {
+                    "name": "keyword.control.return",
+                    "match": "\\b(return)\\b"
+                },
+                {
+                    "name": "keyword.variable",
+                    "match": "\\b(var)\\b"
+                },
+                {
+                    "name": "keyword.function",
+                    "match": "\\b(function)\\b"
+                }
+            ]
+        },
+        "variable": {
+            "patterns": [
+                {
+                    "name": "variable.constant",
+                    "match": "\\b(self|id)\\b"
+                }
+            ]
+        },
+        "class": {
+            "patterns": [
+                {
+                    "name": "support.class.builtin",
+                    "match": "\\b(swarm|stigmergy|neighbors|math|io|string)\\b"
+                }
+            ]
+        },
+        "logical": {
+            "patterns": [
+                {
+                    "name": "keyword.operator.logical",
+                    "match": "!="
+                }
+            ]
+        }
+    }
+}
