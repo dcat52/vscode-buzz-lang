@@ -7,6 +7,12 @@
             "include": "#comments"
         },
         {
+            "include": "#string"
+        },
+        {
+            "include": "#built"
+        },
+        {
             "include": "#operators"
         },
         {
@@ -20,6 +26,12 @@
         },
         {
             "include": "#class"
+        },
+        {
+            "include": "#function"
+        },
+        {
+            "include": "#nil"
         }
     ],
     "repository": {
@@ -33,11 +45,59 @@
                 }
             ]
         },
+        "string": {
+            "patterns": [
+                {
+                    "name": "string.quoted.double",
+                    "begin": "\"",
+                    "end": "\"",
+                    "patterns": [
+                        {
+                            "include": "#string_escape"
+                        }
+                    ]
+                },
+                {
+                    "name": "string.quoted.single",
+                    "begin": "'",
+                    "end": "'",
+                    "patterns": [
+                        {
+                            "include": "#string_escape"
+                        }
+                    ]
+                }
+            ]
+        },
+        "string_escape": {
+            "patterns": [
+                {
+                    "name": "constant.character.escape",
+                    "match": "\\\\."
+                }
+            ]
+        },
+        "nil": {
+            "patterns": [
+                {
+                    "name": "constant.language.nil",
+                    "match": "nil"
+                }
+            ]
+        },
         "operators": {
             "patterns": [
                 {
                     "name": "keyword.operator.arithmetic",
                     "match": "\\+|\\-|\\*|\\/|\\^|%|>|<|="
+                }
+            ]
+        },
+        "logical": {
+            "patterns": [
+                {
+                    "name": "keyword.operator.logical",
+                    "match": "!="
                 }
             ]
         },
@@ -54,14 +114,6 @@
                 {
                     "name": "keyword.control.return",
                     "match": "\\b(return)\\b"
-                },
-                {
-                    "name": "keyword.variable",
-                    "match": "\\b(var)\\b"
-                },
-                {
-                    "name": "keyword.function",
-                    "match": "\\b(function)\\b"
                 }
             ]
         },
@@ -70,6 +122,10 @@
                 {
                     "name": "variable.constant",
                     "match": "\\b(self|id)\\b"
+                },
+                {
+                    "name": "keyword.variable",
+                    "match": "var"
                 }
             ]
         },
@@ -81,12 +137,24 @@
                 }
             ]
         },
-        "logical": {
+        "function": {
             "patterns": [
                 {
-                    "name": "keyword.operator.logical",
-                    "match": "!="
+                    "name": "meta.function.declaration",
+                    "begin": "function",
+                    "end": "$\\n?",
+                    "patterns": [
+                        {
+                            "name": "keyword.control.function",
+                            "match": "$\\n?"
+                        },
+                        {
+                            "name": "entity.name.function.python",
+                            "match": "\\b(\\w+)"
+                        }
+                    ]
                 }
+
             ]
         }
     }

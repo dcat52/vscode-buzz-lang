@@ -14,6 +14,7 @@ hive.element.enc = function(value, time) {
 }
 
 #
+# TODO(dcatherman): do things
 # Create a strucute for a given key in a table
 # PARAM tid: int tid of table
 # PARAM key: hash of data element

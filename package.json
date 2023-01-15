@@ -14,7 +14,7 @@
       "id": "buzz",
       "aliases": ["buzz-lang", "Buzz", "bzz"],
       "extensions": [".bzz"],
-      "configuration": "./syntaxes/buzz.tmLanguage.json"
+      "configuration": "./language-configuration.json"
     }],
     "grammars": [{
       "language": "buzz",

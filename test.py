@@ -19,3 +19,10 @@ class myClass:
         self.myDict = {}
 
         self.myDict[self.id]
+
+    def myClassFx(self):
+        pass
+
+def myFx(param):
+    pass
+
