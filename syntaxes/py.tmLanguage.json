@@ -14,7 +14,7 @@
         }
     ],
     "repository": {
-        "string": {
+        "strings": {
             "patterns": [
                 {
                     "name": "string.quoted.double.python",
@@ -35,6 +35,14 @@
                             "include": "#string_escape"
                         }
                     ]
+                }
+            ]
+        },
+        "string_escape": {
+            "patterns": [
+                {
+                    "name": "constant.character.escape.python",
+                    "match": "\\\\."
                 }
             ]
         },

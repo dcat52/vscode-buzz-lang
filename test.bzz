@@ -1,291 +1,73 @@
-hive.element = {}
+include "file.bzz"
 
-#
-# Encode the data value and metadata into a table
-# PARAM value: value to encode
-# PARAM time: time of the data
-# RETURN: table of encoded data
-#
-hive.element.enc = function(value, time) {
-    var a = {}
-    a.value = value
-    a.time = time
-    return a
+# Declare a table
+myTable = {}
+
+# add sub x and sub y
+myTable.x = 1
+myTable.y = 3
+
+# redo declaraing the table cause why not
+myTable = {
+    .x = 1,
+    .y = 3
 }
 
-#
-# TODO(dcatherman): do things
-# Create a strucute for a given key in a table
-# PARAM tid: int tid of table
-# PARAM key: hash of data element
-#
-hive.element.empty_put = function(tid, key) {
+# more ways to use a table
+myTable['z'] = 4
+myTable[2] = 5
 
-    var dataTable = hive.get_data_table_by_tid(tid)
-    if (dataTable == nil) {
-        return 0
-    }
+# declare a variable
+# yes, it is called abc
+# yes, it is set to 4
+var abc = 4
 
-    # if key not in the table, create the structure for one
-    if (dataTable[key] == nil) {
-        dataTable[key] = {}
-        dataTable[key].tid = tid
-        dataTable[key].key = key
-        dataTable[key].head = {}
-        dataTable[key].root = nil
-        dataTable[key].dynamics_closure = nil
-        dataTable[key].length = 0
-    }
+b = abc*2+3/5//2**5%6
+
+if(abc == myTable.x) {
+    log("inside the if")
+    return
 }
 
-#
-# Put a data value for a given key into a table
-# PARAM tid: int tid of table
-# PARAM key: hash of data element
-# PARAM data: encoded data block
-#
-hive.element.put = function(tid, key, data) {
-
-    var dataTable = hive.get_data_table_by_tid(tid)
-    if (dataTable == nil) {
-        return 0
-    }
-
-    # create an isolated element
-    var element = {}
-    element.value = data.value
-    element.time = data.time
-    element.next = nil
-    element.prev = nil
-
-    var topic_ele = string.concat("hive", string.tostring(tid))
-    # hive.internal.broadcast_single_ele(topic_ele, key, element)
-
-    # if key not in the table, create the structure for one
-    if (dataTable[key] == nil) {
-        hive.element.empty_put(tid, key)
-
-        dataTable[key].length = 1
-
-        dataTable[key].head = element
-        dataTable[key].root = element
-
-    } else {
-        # set next to be the first element (if one exists)
-        var next = dataTable[key].head
-        # if next points to an empty table, set it to nil to keep things clean
-        if (size(next) == 0) {
-            next = nil
-        }
-        # now can set head to the new element and add the next pointer
-        dataTable[key].head = {}
-        if (next != nil) {
-            element.next = next
-            next.prev = element
-        }
-        dataTable[key].head = element
-        dataTable[key].length = dataTable[key].length + 1
-
-        if (dataTable[key].length == 1) {
-            dataTable[key].root = element
-        }
-    }
+if(1 != 2 or 1 > 2 or 1 >= 2 and 2 <= 1 and 1 < 3) {
 }
 
-hive.element.store = function(tid, key, value) {
-
-    var dataTable = hive.get_data_table_by_tid(tid)
-    if (dataTable == nil) {
-        return
-    }
-
-    # create an isolated element
-    var element = {}
-    element.value = value
-    element.hash = hive.element.generate_hash()
-    element.next = nil
-    element.prev = nil
-
-    # if key not in the table, create the structure for one
-    if (dataTable[key] == nil) {
-        hive.element.empty_put(tid, key)
-
-        dataTable[key].length = 1
-
-        dataTable[key].head = element
-        dataTable[key].root = element
-
-    } else {
-        # set next to be the first element (if one exists)
-        var next = dataTable[key].head
-        # if next points to an empty table, set it to nil to keep things clean
-        if (size(next) == 0) {
-            next = nil
-        }
-        # now can set head to the new element and add the next pointer
-        dataTable[key].head = {}
-        if (next != nil) {
-            element.next = next
-            next.prev = element
-        }
-        dataTable[key].head = element
-        dataTable[key].length = dataTable[key].length + 1
-
-        if (dataTable[key].length == 1) {
-            dataTable[key].root = element
-        }
-    }
-}
-
-hive.element.find_with_hash = function(tid, key, hash) {
-    var ele = hive.element.fetch_ele(tid, key, 0)
-
-
-    if (size(ele) == 0) {
-        return
-    }
-
-    if (ele.hash == hash) {
-        return ele
-    }
-
-    while (ele.next != nil) {
-        ele = ele.next
-        if (ele.hash == hash) {
-            return ele
-        }
-    }
-}
-
-hive.element.store_with_hash = function(tid, key, value, hash) {
-    hive.element.store(tid, key, value)
-    var ele = hive.element.get_ele(tid,key)
-    ele.hash = hash
-}
+idk = (1, 2, 3.14)
 
 #
-# Get latest data value for a given key from a table
-# PARAM tid: int tid of table
-# PARAM key: hash of data element
-# RETURN: value
-#
-hive.element.get = function(tid, key) {
-
-    var ele = hive.get_ele(tid, key)
-    if (ele == nil) {
-        return nil
-    }
-
-    var topic_ele = string.concat("hive", string.tostring(tid))
-    # hive.internal.broadcast_single_ele(topic_ele, key, {.value=ele.value, .time=ele.time, .type='G'})
-
-    return ele.value
-}
+function myFx() {}
 
 #
-# Get latest element for a given key from a table
-# PARAM tid: int tid of table
-# PARAM key: hash of data element
-# RETURN: table
-#
-hive.element.get_ele = function(tid, key) {
+function myFx2(a, b,c) {}
 
-    var dataTable = hive.get_data_table_by_tid(tid)
-    if (dataTable == nil) {
-        return nil
-    }
-
-    if (dataTable[key] == nil) {
-        return nil
-    }
-
-    return dataTable[key].head
-
-}
+"""
+hi
+"""
 
 #
-# Fetch the i'th data value for a given key from a table
-# PARAM tid: int tid of table
-# PARAM key: hash of data element
-# PARAM i: element number
-# RETURN: value
-#
-hive.element.fetch = function(tid, key, i) {
-    var ele = hive.element.fetch_ele(tid, key, i)
-    return ele.value
-}
-
-#
-# Fetch the i'th element for a given key from a table
-# PARAM tid: int tid of table
-# PARAM key: hash of data element
-# PARAM i: element number
-# RETURN: table
-#
-hive.element.fetch_ele = function(tid, key, i) {
-    var dataTable = hive.get_data_table_by_tid(tid)
-    if (dataTable == nil) {
-        return nil
-    }
-
-    if (dataTable[key] == nil) {
-        return nil
-    }
-
-    var ele = dataTable[key].head
-
-    if (ele == nil) {
-        return nil
-    }
-
-    var j = 0
-    for (j = 0, j < i, j = j + 1) {
-        if (ele.next == nil) {
-            return nil
-        }
-
-        ele = ele.next
-
-        if (ele == nil) {
-            return nil
-        }
-    }
-
-    return ele
-}
-
-#
-# Delete a key data element from a table
-# PARAM tid: int tid of table
-# PARAM key: hash of data element
-#
-hive.element.del = function(tid, key) {
-    var dataTable = hive.get_data_table_by_tid(tid)
-    if (dataTable == nil) {
-        return 0
-    }
-
-    hive.put(tid, key, nil)
-    # dataTable[key] = nil
+myTable.fx = function(a, b, c_1) {
+    var vals = {}
+    vals.a = a
+    vals.b = b
+    vals.c = c_1
+    return vals
 }
 
 
-hive.element.generate_hash = function() {
-    return math.rng.uniform()
+myFx()
+
+myFx2(1, 2, 3)
+
+myTable.fx(1, 2, 3)
+
+if (abc == nil) {
+    log("hi")
+} else {
+    log("bye")
 }
 
-hive.element.cmp_to_history = function(tid, key, hash) {
-    var ele = hive.element.get_ele(tid, key)
-    var count = 0
-
-    while (ele) {
-        if (hash == ele.hash) {
-            return count
-        }
-
-        count = count + 1
-        ele = ele.next
-    }
-
-    return -1
+while (abc > 0.5) {
+    abc = math.rng.uniform()
 }
+
+log(size(myTable))

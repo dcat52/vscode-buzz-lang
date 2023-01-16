@@ -7,48 +7,172 @@
             "include": "#comments"
         },
         {
-            "include": "#string"
-        },
-        {
-            "include": "#built"
-        },
-        {
-            "include": "#operators"
-        },
-        {
-            "include": "#logical"
-        },
-        {
             "include": "#keywords"
         },
         {
-            "include": "#variable"
+            "include": "#punctuations"
         },
         {
             "include": "#class"
         },
         {
-            "include": "#function"
+            "include": "#functions"
         },
         {
-            "include": "#nil"
+            "include": "#tables"
+        },
+        {
+            "include": "#variables"
+        },
+        {
+            "include": "#strings"
+        },
+        {
+            "include": "#numerics"
         }
     ],
     "repository": {
 
+        "keywords": {
+            "patterns": [
+                {
+                    "name": "storage.type.buzz",
+                    "match": "\\b(var)\\b"
+                },
+                {
+                    "name": "keyword",
+                    "match": "\\b(nil)\\b"
+                },
+                {
+                    "name": "keyword",
+                    "match": "\\b(if|else)\\b"
+                },
+                {
+                    "name": "keyword",
+                    "match": "\\b(return)\\b"
+                },
+                {
+                    "name": "keyword",
+                    "match": "\\b(for|while|foreach)\\b"
+                },
+                {
+                    "name": "keyword",
+                    "match": "\\b(and|or|not)\\b"
+                },
+                {
+                    "name": "support.function.buzz",
+                    "match": "\\b(size)\\b"
+                },
+                {
+                    "name": "support.function.buzz",
+                    "match": "\\b(log|print)\\b"
+                },
+                {
+                    "name": "keyword",
+                    "match": "\\b(include)\\b"
+                }
+            ]
+        },
+        "class": {
+            "patterns": [
+                {
+                    "name": "support.class.builtin.buzz",
+                    "match": "\\b(swarm|stigmergy|neighbors|math|io|string)\\b"
+                }
+            ]
+        },
+        "functions": {
+            "patterns": [
+                {
+                    "name": "punctuation.separator.element.buzz",
+                    "match": "\\,"
+                },
+                {
+                    "name": "meta.function.buzz",
+                    "match": "\\b(.*)\\s*=\\s*(function)\\s*(\\(([A-Za-z_][A-Za-z0-9_]*|)\\))",
+                    "example": "myFx = function(param)",
+                    
+                    "captures": {
+                        "1": {
+                            "name": "entity.name.function.buzz"
+                        },
+                        "2": {
+                            "name": "keyword.control.function.buzz"
+                        },
+                        "3": {
+                            "patterns": [
+                                {
+                                    "name": "variable.parameter.buzz",
+                                    "match": "[A-Za-z_][A-Za-z0-9_]*"
+                                },
+                                {
+                                    "name": "punctuation.separator.parameter.buzz",
+                                    "match": "\\,"
+                                }
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "meta.function.buzz",
+                    "match": "\\b(function)\\s*(.*)\\s*(\\(.*\\))",
+                    
+                    "captures": {
+                        "1": {
+                            "name": "keyword.control.function.buzz"
+                        },
+                        "2": {
+                            "name": "entity.name.function.buzz"
+                        },
+                        "3": {
+                            "patterns": [
+                                {
+                                    "name": "variable.parameter.buzz",
+                                    "match": "[A-Za-z_][A-Za-z0-9_]*"
+                                },
+                                {
+                                    "name": "punctuation.separator.parameter.buzz",
+                                    "match": "\\,"
+                                }
+                            ]
+                        }
+                    }
+                }
+            ]
+        },
+        "tables": {
+            "patterns": [
+                {
+                    "name": "variable.other.buzz",
+                    "match": "([A-Za-z_][A-Za-z0-9_]*)(?:\\s*)"
+                },
+                {
+                    "name": "variable.other.buzz",
+                    "match": "^.*\\["
+                }
+            ]
+        },
+        "variables": {
+            "patterns": [
+                {
+                    "name": "variable.other.buzz",
+                    "match": "([A-Za-z_][A-Za-z0-9_]*)(?:\\s*)"
+                }
+            ]
+        },
         "comments": {
             "patterns": [
                 {
-                    "name": "comment",
+                    "name": "comment.line.number-sign.buzz",
                     "begin": "#",
                     "end": "$\\n?"
                 }
             ]
         },
-        "string": {
+        "strings": {
             "patterns": [
                 {
-                    "name": "string.quoted.double",
+                    "name": "string.quoted.double.buzz",
                     "begin": "\"",
                     "end": "\"",
                     "patterns": [
@@ -58,7 +182,7 @@
                     ]
                 },
                 {
-                    "name": "string.quoted.single",
+                    "name": "string.quoted.single.buzz",
                     "begin": "'",
                     "end": "'",
                     "patterns": [
@@ -72,89 +196,41 @@
         "string_escape": {
             "patterns": [
                 {
-                    "name": "constant.character.escape",
+                    "name": "constant.character.escape.buzz",
                     "match": "\\\\."
                 }
             ]
         },
-        "nil": {
+        "numerics": {
             "patterns": [
                 {
-                    "name": "constant.language.nil",
-                    "match": "nil"
+                    "name": "constant.numeric.buzz",
+                    "match": "\\d+\\.*\\d*"
                 }
             ]
         },
-        "operators": {
+        "punctuations": {
             "patterns": [
+                {
+                    "name": "punctuations.separator.element.buzz",
+                    "match": ","
+                },
+                {
+                    "name": "punctuation.separator.period.buzz",
+                    "match": "\\."
+                },
+                {
+                    "name": "keyword.operator.comparison",
+                    "match": "\\=\\=|\\<\\=|\\>\\=|\\>|\\<|!="
+                },
+                {
+                    "name": "keyword.operator.assignment",
+                    "match": "\\="
+                },
                 {
                     "name": "keyword.operator.arithmetic",
-                    "match": "\\+|\\-|\\*|\\/|\\^|%|>|<|="
+                    "match": "\\+|\\-|\\*|\\/|\\%"
                 }
-            ]
-        },
-        "logical": {
-            "patterns": [
-                {
-                    "name": "keyword.operator.logical",
-                    "match": "!="
-                }
-            ]
-        },
-        "keywords": {
-            "patterns": [
-                {
-                    "name": "keyword.control.if",
-                    "match": "\\b(if|else)\\b"
-                },
-                {
-                    "name": "keyword.control.loops",
-                    "match": "\\b(while|for)\\b"
-                },
-                {
-                    "name": "keyword.control.return",
-                    "match": "\\b(return)\\b"
-                }
-            ]
-        },
-        "variable": {
-            "patterns": [
-                {
-                    "name": "variable.constant",
-                    "match": "\\b(self|id)\\b"
-                },
-                {
-                    "name": "keyword.variable",
-                    "match": "var"
-                }
-            ]
-        },
-        "class": {
-            "patterns": [
-                {
-                    "name": "support.class.builtin",
-                    "match": "\\b(swarm|stigmergy|neighbors|math|io|string)\\b"
-                }
-            ]
-        },
-        "function": {
-            "patterns": [
-                {
-                    "name": "meta.function.declaration",
-                    "begin": "function",
-                    "end": "$\\n?",
-                    "patterns": [
-                        {
-                            "name": "keyword.control.function",
-                            "match": "$\\n?"
-                        },
-                        {
-                            "name": "entity.name.function.python",
-                            "match": "\\b(\\w+)"
-                        }
-                    ]
-                }
-
             ]
         }
     }
