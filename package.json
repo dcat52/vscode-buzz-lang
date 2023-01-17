@@ -11,13 +11,13 @@
   ],
   "contributes": {
     "languages": [{
-      "id": "buzz",
-      "aliases": ["buzz-lang", "Buzz", "bzz"],
+      "id": "buzz-lang",
+      "aliases": ["Buzz", "buzz-lang", "bzz"],
       "extensions": [".bzz"],
       "configuration": "./language-configuration.json"
     }],
     "grammars": [{
-      "language": "buzz",
+      "language": "buzz-lang",
       "scopeName": "source.buzz",
       "path": "./syntaxes/buzz.tmLanguage.json"
     }]
