@@ -20,13 +20,13 @@ print(myD)
 if("hello"):
     pass
 
-a = 5
+a = -5
 
 b = a*2+3/5//2**5
 
 my_tuple = (1, 2, 3.14)
 
-if(a == 4):
+if(a == 4 and 1==1):
     print("hi" + 'hi')
 
 class myClass:

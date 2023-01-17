@@ -40,23 +40,23 @@
                     "match": "\\b(var)\\b"
                 },
                 {
-                    "name": "keyword",
+                    "name": "keyword.buzz",
                     "match": "\\b(nil)\\b"
                 },
                 {
-                    "name": "keyword",
+                    "name": "keyword.control.buzz",
                     "match": "\\b(if|else)\\b"
                 },
                 {
-                    "name": "keyword",
+                    "name": "keyword.control.buzz",
                     "match": "\\b(return)\\b"
                 },
                 {
-                    "name": "keyword",
+                    "name": "keyword.control.buzz",
                     "match": "\\b(for|while|foreach)\\b"
                 },
                 {
-                    "name": "keyword",
+                    "name": "keyword.buzz",
                     "match": "\\b(and|or|not)\\b"
                 },
                 {
@@ -68,8 +68,12 @@
                     "match": "\\b(log|print)\\b"
                 },
                 {
-                    "name": "keyword",
+                    "name": "keyword.buzz",
                     "match": "\\b(include)\\b"
+                },
+                {
+                    "name": "variable.language.buzz",
+                    "match": "\\b(id)\\b"
                 }
             ]
         },
@@ -83,6 +87,10 @@
         },
         "functions": {
             "patterns": [
+                {
+                    "name": "entity.name.function.buzz",
+                    "match": "[A-Za-z_][A-Za-z0-9_]*\\("
+                },
                 {
                     "name": "punctuation.separator.element.buzz",
                     "match": "\\,"
@@ -229,7 +237,7 @@
                 },
                 {
                     "name": "keyword.operator.arithmetic",
-                    "match": "\\+|\\-|\\*|\\/|\\%"
+                    "match": "\\+|\\-|\\*|\\/|\\%|\\^"
                 }
             ]
         }
