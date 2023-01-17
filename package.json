@@ -10,16 +10,34 @@
     "Programming Languages"
   ],
   "contributes": {
-    "languages": [{
-      "id": "buzz-lang",
-      "aliases": ["Buzz", "buzz-lang", "bzz"],
-      "extensions": [".bzz"],
-      "configuration": "./language-configuration.json"
-    }],
-    "grammars": [{
-      "language": "buzz-lang",
-      "scopeName": "source.buzz",
-      "path": "./syntaxes/buzz.tmLanguage.json"
-    }]
+    "languages": [
+      {
+        "id": "buzz-lang",
+        "aliases": [
+          "Buzz",
+          "buzz-lang",
+          "bzz"
+        ],
+        "extensions": [
+          ".bzz"
+        ],
+        "configuration": "./language-configuration.json"
+      }
+    ],
+    "grammars": [
+      {
+        "language": "buzz-lang",
+        "scopeName": "source.buzz",
+        "path": "./syntaxes/buzz.tmLanguage.json"
+      }
+    ]
+  },
+  "dependencies": {
+    "node": "^19.4.0",
+    "vsce": "^2.15.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/dcat52/buzz-lang-vscode.git"
   }
 }
