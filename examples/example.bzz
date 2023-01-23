@@ -39,13 +39,9 @@ idk = (1, 2, 3.14)
 
 log(size(myTable))
 
+a = .1 
 
-
-
-
-
-
-
+{.1="a", .1.1="b", .c="c"}
 
 while (abc != nil and abc > 0.5) {
     abc = math.rng.uniform()
@@ -84,3 +80,11 @@ myFx2(1, 2, 3)
 
 myTable.fx(1, 2, 3)
 
+a = .1
+
+{ .1="a", .4.2="b", .x="c" }
+
+# a = "["
+# a = "[0]"
+
+log("I (robot ", id, ") received msg [ ", msg, " ] from robot ", rid)

@@ -4,36 +4,36 @@
     "fileTypes": ["bzz"],
     "patterns": [
         {
-            "include": "#comments"
+            "include": "#comment"
         },
         {
-            "include": "#keywords"
+            "include": "#keyword"
         },
         {
-            "include": "#punctuations"
+            "include": "#punctuation"
         },
         {
             "include": "#class"
         },
         {
-            "include": "#functions"
+            "include": "#function"
         },
         {
-            "include": "#tables"
+            "include": "#table"
         },
         {
-            "include": "#variables"
+            "include": "#variable"
         },
         {
-            "include": "#strings"
+            "include": "#string"
         },
         {
-            "include": "#numerics"
+            "include": "#numeric"
         }
     ],
     "repository": {
 
-        "keywords": {
+        "keyword": {
             "patterns": [
                 {
                     "name": "storage.type.buzz",
@@ -85,7 +85,7 @@
                 }
             ]
         },
-        "functions": {
+        "function": {
             "patterns": [
                 {
                     "name": "entity.name.function.buzz",
@@ -148,7 +148,7 @@
                 }
             ]
         },
-        "tables": {
+        "table": {
             "patterns": [
                 {
                     "name": "variable.other.buzz",
@@ -156,11 +156,11 @@
                 },
                 {
                     "name": "variable.other.buzz",
-                    "match": "^.*\\["
+                    "match": "\\b[A-Za-z0-9_\\.]*\\["
                 }
             ]
         },
-        "variables": {
+        "variable": {
             "patterns": [
                 {
                     "name": "variable.other.buzz",
@@ -168,7 +168,7 @@
                 }
             ]
         },
-        "comments": {
+        "comment": {
             "patterns": [
                 {
                     "name": "comment.line.number-sign.buzz",
@@ -177,7 +177,7 @@
                 }
             ]
         },
-        "strings": {
+        "string": {
             "patterns": [
                 {
                     "name": "string.quoted.double.buzz",
@@ -209,7 +209,7 @@
                 }
             ]
         },
-        "numerics": {
+        "numeric": {
             "patterns": [
                 {
                     "name": "constant.numeric.buzz",
@@ -217,7 +217,7 @@
                 }
             ]
         },
-        "punctuations": {
+        "punctuation": {
             "patterns": [
                 {
                     "name": "punctuations.separator.element.buzz",
