@@ -2,13 +2,14 @@
   "name": "vscode-buzz-lang",
   "displayName": "Buzz",
   "description": "provide language syntax highlighting for buzz",
-  "version": "0.0.1",
+  "version": "0.1.1",
   "engines": {
     "vscode": "^1.74.0"
   },
   "categories": [
     "Programming Languages"
   ],
+  "publisher": "dcat52",
   "contributes": {
     "languages": [
       {
