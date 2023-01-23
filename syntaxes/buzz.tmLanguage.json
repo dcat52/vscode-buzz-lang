@@ -65,7 +65,7 @@
                 },
                 {
                     "name": "support.function.buzz",
-                    "match": "\\b(log|print)\\b"
+                    "match": "\\b(log)\\b"
                 },
                 {
                     "name": "keyword.buzz",
