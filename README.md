@@ -1,4 +1,4 @@
-# buzz-lang-vscode README
+# vscode-buzz-lang README
 
 This extension for VS Code provides syntax highlighting for the Buzz programming language and associated .bzz files. Developed to make it easier to read and write code in Buzz by providing visual cues for language keywords, functions, and other elements. It also enables code navigation, code folding and bracket matching.
 

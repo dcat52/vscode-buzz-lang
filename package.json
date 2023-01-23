@@ -1,6 +1,6 @@
 {
-  "name": "buzz-lang-syntax",
-  "displayName": "buzz-lang-syntax",
+  "name": "vscode-buzz-lang",
+  "displayName": "Buzz",
   "description": "provide language syntax highlighting for buzz",
   "version": "0.0.1",
   "engines": {
@@ -38,6 +38,6 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/dcat52/buzz-lang-vscode.git"
+    "url": "https://github.com/dcat52/vscode-buzz-lang.git"
   }
 }
