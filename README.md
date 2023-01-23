@@ -15,9 +15,13 @@ To be determined.
 
 ## Release Notes
 
-### 0.1 (pre-release)
+### 0.1.1 (pre-release)
 
-Pre-initial release of the extension
+Pre-initial release of the extension. Provides bug fixes and adding to marketplace.
+
+### 0.0.1 (pre-release)
+
+Pre-initial release of the extension.
 
 <!-- ### 1.0.0
 
